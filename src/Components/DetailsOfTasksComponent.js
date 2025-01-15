@@ -1,6 +1,6 @@
 
 
-let DetailOfTaskComponent = (props) => {
+let DetailOfTasksComponent = (props) => {
     let { task } = props
 
     return (
@@ -13,4 +13,4 @@ let DetailOfTaskComponent = (props) => {
     )
 }
 
-export default DetailOfTaskComponent;
+export default DetailOfTasksComponent;

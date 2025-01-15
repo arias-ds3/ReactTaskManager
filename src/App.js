@@ -1,7 +1,7 @@
 import './App.css';
 import { useState , useRef, useEffect } from 'react';
-import DetailOfTaskComponent from './Components/DetailsOfTaskComponent';
-
+import DetailOfTasksComponent from './Components/DetailsOfTasksComponent';
+import ListOfTasksComponent from './Components/ListOfTasksComponent';
 
 let App = () => {
   let [name, setName] = useState("")
@@ -10,7 +10,7 @@ let App = () => {
 
 let [taskSelected, setTaskSelected] = useState({});
 
-  let [task, setTasks] = useState([
+  let [tasks, setTasks] = useState([
     {
       name: "Task1",
       place: "School",
@@ -29,26 +29,17 @@ let addTask = () => {
       place: place,
       priority: priority
   }
-  setTasks([...task, newTask])
+  setTasks([...tasks, newTask])
   setName("")
   setPlace("")
   setPriority("")
 }
 
-let onClickSelectedTask = (name) => {
-  let foundTask =  task.find( t => t.name == name)
-  setTaskSelected(foundTask)
-}
-
   return ( 
-    <div className='container'>
-        <h1>List of Task</h1>
-        <ul className='task-list'>
-        { task.map( t =>
-          <li key={t.name} onClick={ () => {onClickSelectedTask(t.name)} }> {t.name}</li>) }
-          </ul>
+    <div className="container">
+      <ListOfTasksComponent tasks={tasks} setTaskSelected={setTaskSelected}/>
 
-          <div className='task-form'>
+          <div className="task-form">
           <h2>Add task</h2>
           <input type="text" placeholder='name' value={name} onChange={(e) => { setName(e.currentTarget.value)}}></input>
           <input type="text" placeholder='place'  value={place} onChange={(e) => { setPlace(e.currentTarget.value)}}></input>
@@ -56,7 +47,7 @@ let onClickSelectedTask = (name) => {
           <button onClick={addTask}>Add task</button>
           </div>
 
-          <DetailOfTaskComponent task={taskSelected}/>
+          <DetailOfTasksComponent task={taskSelected}/>
       </div>
 
   )
