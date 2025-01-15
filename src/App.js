@@ -6,6 +6,10 @@ function App() {
   let [place, setPlace] = useState("");
   let [priority, setPriority] = useState(0);
 
+let nameRef = useRef("");
+let placeRef = useRef("");
+let priorityRef = useRef(0);
+
   let [task, setTasks] = useState([
     {
       name: "Task1",
@@ -28,6 +32,15 @@ let addTask = () => {
   setTasks([...task, newTask])
 }
 
+let addTaskWithRefs = () => {
+  let newTask = {
+    name: nameRef.current.value,
+      place: placeRef.current.value,
+      priority: priorityRef.current.value
+  }
+  setTasks([...task, newTask])
+}
+
   return ( 
     <div>
       <h2>Add task</h2>
@@ -35,6 +48,13 @@ let addTask = () => {
       <input type="text" placeholder='place' onChange={(e) => { setPlace(e.currentTarget.value)}}></input>
       <input type="number" placeholder='priority' onChange={(e) => { setPriority(parseInt(e.currentTarget.value))}}></input>
       <button onClick={addTask}>Add task</button>
+
+      <h2>add task Ref</h2>
+      <input ref={nameRef} type="text" placeholder='name' ></input>
+      <input ref={placeRef} type="text" placeholder='place' ></input>
+      <input ref={priorityRef} type="number" placeholder='priority' ></input>
+      <button onClick={addTaskWithRefs}>Add task</button>
+
 
         <ul>
         { task.map( t =>
