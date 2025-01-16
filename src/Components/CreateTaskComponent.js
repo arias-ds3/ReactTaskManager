@@ -1,4 +1,5 @@
-import { useState , useRef, useEffect } from 'react';
+import { useState , useRef } from 'react'; 
+import { useNavigate } from 'react-router-dom';
 
 let CreateTaskComponent = (props) => {
     let { tasks, setTasks } = props
@@ -6,6 +7,8 @@ let CreateTaskComponent = (props) => {
     let [name, setName] = useState("")
     let [place, setPlace] = useState("");
     let [priority, setPriority] = useState(0);
+
+    let navigate = useNavigate();
 
     let addTask = () => {
         let newTask = {
@@ -18,6 +21,7 @@ let CreateTaskComponent = (props) => {
         setName("")
         setPlace("")
         setPriority("")
+        navigate("/")
       }
       
     return (
