@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
 
 let ListOfTasksComponent = (props) => {
-    let { tasks, setTasks } = props
+    let { tasks, setTasksSelected } = props
 
 let onClickDeleteTask = (name) => {
-    let otherTasks = tasks.filter(t => t.name != name)
-    setTasks(otherTasks)
+    let foundTask = tasks.filter(t => t.name != name)
+    setTasksSelected(foundTask)
 }
     return (
         <div>
