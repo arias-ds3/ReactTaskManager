@@ -1,9 +1,5 @@
 import './App.css';
-import { useState , useRef, useEffect } from 'react';
-import DetailOfTasksComponent from './Components/DetailsOfTasksComponent';
-import ListOfTasksComponent from './Components/ListOfTasksComponent';
-import CreateTaskComponent from './Components/CreateTaskComponent';
-import { Route, Routes, Link } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
 
 let App = () => {
 
@@ -21,31 +17,17 @@ let App = () => {
   ])
   
 
-  return ( 
-    <div className="container">
-     <nav>
-        <ul className='navbar'> 
-          <li><Link to="/">Task</Link></li>
-          <li><Link to="/CreateTask">Add Task</Link></li>
-        </ul>
-      </nav> 
-      <Routes>
-        <Route path='/' element={
-          <ListOfTasksComponent setTasks={setTasks} tasks={tasks}/>
-        }></Route>
-
-        <Route path='/createTask' element={
-          <CreateTaskComponent tasks={tasks} setTasks={setTasks} />
-        }>
-       </Route>
-
-       <Route path='/DetailsOfTask/:name' element={
-           <DetailOfTasksComponent tasks={tasks} />
-       }>
-       </Route>
-      </Routes>
-      </div>
-
+  return (
+    <div>
+      <ul>
+        { task.map( t => 
+          <li>
+            <b>{ t.name} </b>
+            <div>Priority: {t.priority} </div>
+            <div>{t.place} </div>
+          </li> )}
+      </ul>
+    </div>
   )
   ;
 }
