@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ListOfTasksComponent from "./ListOfTasksComponent";
+
 
 let DetailOfTasksComponent = (props) => {
     let { tasks } = props
@@ -9,9 +9,9 @@ let DetailOfTasksComponent = (props) => {
     let [task,setTask] = useState(null)
 
     useEffect( () => {
-        let findtask = tasks.find( t => t.name == name)
-        if (findtask != null){
-            setTask(findtask)
+        let findTask = tasks.find( t => t.name == name)
+        if (findTask != null){
+            setTask(findTask)
         }
     })
 

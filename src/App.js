@@ -7,8 +7,6 @@ import { Link, Route, Routes } from 'react-router-dom';
 
 let App = () => {
 
-  let [taskSelected, setTaskSelected] = useState({});
-
   let [tasks, setTasks] = useState([
     {
       name: "Task1",
@@ -33,14 +31,14 @@ let App = () => {
       </nav>
       <Routes>
         <Route path='/' element={
-          <ListOfTasksComponent setTasks={setTasks} tasks={tasks} setTaskSelected={setTaskSelected}/>
+          <ListOfTasksComponent setTasks={setTasks} tasks={tasks} />
         } ></Route>
         <Route path='/createTask' element={
           <CreateTaskComponent tasks={tasks} setTasks={setTasks} />
         } >
         </Route>
-        <Route path='/detailsTask' element={
-          <DetailOfTasksComponent task={taskSelected} />
+        <Route path='/detailsTask/:name' element={
+          <DetailOfTasksComponent tasks={tasks} />
         } >
         </Route>
       </Routes>
